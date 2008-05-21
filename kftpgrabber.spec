@@ -1,5 +1,5 @@
 %define version 0.8.99
-%define release %mkrel 0.%revision.4
+%define release %mkrel 0.%revision.5
 %define revision 741976
 
 Name:		kftpgrabber
