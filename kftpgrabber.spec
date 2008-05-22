@@ -1,5 +1,5 @@
 %define version 0.8.99
-%define release %mkrel 0.%revision.5
+%define release %mkrel 0.%revision.6
 %define revision 741976
 
 Name:		kftpgrabber
@@ -57,7 +57,7 @@ multiple FTP sessions (using tabs), bookmark system and more.
 %package -n %libkftpinterfaces
 Summary: KDE 4 core library
 Group: System/Libraries
-
+Obsoletes:  %{_lib}kftpgrabber0 < 0.8.1-2
 
 %description -n %libkftpinterfaces
 KFtpgrabber library.
