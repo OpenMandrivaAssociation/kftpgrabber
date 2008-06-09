@@ -62,8 +62,12 @@ Obsoletes:  %{_lib}kftpgrabber0 < 0.8.1-2
 %description -n %libkftpinterfaces
 KFtpgrabber library.
 
+%if %mdkversion < 200900
 %post -n %libkftpinterfaces -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
 %postun -n %libkftpinterfaces -p /sbin/ldconfig
+%endif
 
 %files -n %libkftpinterfaces
 %defattr(-,root,root)
