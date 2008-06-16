@@ -1,18 +1,19 @@
 %define version 0.8.99
-%define release %mkrel 0.%revision.6
-%define revision 741976
+%define release %mkrel 0.%revision.1
+%define revision 821135
 
 Name:		kftpgrabber
 Version:	%{version}
 Release:	%{release}
 License:	GPLv2+
-Url:	        http://kftpgrabber.sourceforge.net/	
+Url:	        http://www.kftp.org/	
 Group:		Networking/File transfer
-Source0:	%{name}-%version.%revision.tar.bz2
+Source0:	%{name}-r%revision.tar.bz2
 Summary:        Graphical FTP client for KDE4
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:  kdelibs4-devel
 BuildRequires:  openssl-devel
+BuildRequires:	ssh2-devel
 Obsoletes:      kde4-%name <= 0.8.99-0.741976.4
 Provides:       kde4-%name
 
@@ -95,9 +96,11 @@ for KFtpgrabber.
 
 
 %prep
-%setup -q -n %name-%version
+%setup -q -n %name
 
 %build
+# otherwise it fails on linking final executable
+%define _disable_ld_as_needed 1
 %cmake_kde4 
 %make
 
