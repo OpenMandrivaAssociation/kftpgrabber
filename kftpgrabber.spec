@@ -1,6 +1,6 @@
 %define version 0.8.99
 %define release %mkrel 0.%revision.1
-%define revision 829080
+%define revision 851249
 
 Name:		kftpgrabber
 Version:	%{version}
@@ -8,7 +8,7 @@ Release:	%{release}
 License:	GPLv2+
 Url:	        http://www.kftp.org/	
 Group:		Networking/File transfer
-Source0:	%{name}-r%revision.tar.bz2
+Source0:	%{name}-%version.%revision.tar.bz2
 Summary:        Graphical FTP client for KDE4
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:  kdelibs4-devel
