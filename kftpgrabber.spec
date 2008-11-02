@@ -1,6 +1,6 @@
 %define version 0.8.99
 %define release %mkrel 0.%revision.1
-%define revision 851249
+%define revision 878879
 
 Name:		kftpgrabber
 Version:	%{version}
@@ -100,7 +100,7 @@ for KFtpgrabber.
 
 %build
 # otherwise it fails on linking final executable
-%define _disable_ld_as_needed 1
+#define _disable_ld_as_needed 1
 %cmake_kde4 
 %make
 
