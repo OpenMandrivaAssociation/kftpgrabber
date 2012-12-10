@@ -1,6 +1,9 @@
+#imported from MRB
+
 %define version 0.8.99
-%define release %mkrel 0.%revision.2
-%define revision 878879
+%define release %mkrel 0.%revision.1
+#newer svn 
+%define revision 1323046
 
 Name:		kftpgrabber
 Version:	%{version}
@@ -8,9 +11,9 @@ Release:	%{release}
 License:	GPLv2+
 Url:	        http://www.kftp.org/	
 Group:		Networking/File transfer
-Source0:	%{name}-%version.%revision.tar.bz2
+Source0:		%{name}-%version.%revision.tar.bz2
+Patch0:		kftpgrabber-0.8.99.1323046-ssh2.patch
 Summary:        Graphical FTP client for KDE4
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:  kdelibs4-devel
 BuildRequires:  openssl-devel
 BuildRequires:	ssh2-devel
@@ -24,16 +27,10 @@ KFTPGrabber is a graphical FTP client for KDE4.
 It supports SSL encryption, FXP transfers,
 multiple FTP sessions (using tabs), bookmark system and more.
 
-%post
-%{update_desktop_database}
-%update_icon_cache hicolor
 
-%postun
-%{clean_desktop_database}
-%clean_icon_cache hicolor
 
 %files
-%defattr(-,root,root)
+%doc AUTHORS ChangeLog COPYING README Roadmap
 %_kde_bindir/kftpgrabber
 %_kde_libdir/kde4/kftpimportplugin_filezilla3.so
 %_kde_libdir/kde4/kftpimportplugin_gftp.so
@@ -63,15 +60,8 @@ Obsoletes:  %{_lib}kftpgrabber0 < 0.8.1-2
 %description -n %libkftpinterfaces
 KFtpgrabber library.
 
-%if %mdkversion < 200900
-%post -n %libkftpinterfaces -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkftpinterfaces -p /sbin/ldconfig
-%endif
-
 %files -n %libkftpinterfaces
-%defattr(-,root,root)
+%doc AUTHORS ChangeLog COPYING README Roadmap
 %_kde_libdir/libkftpinterfaces.so.*
 
 #------------------------------------------------
@@ -89,26 +79,25 @@ This package includes the header files you will need to compile applications
 for KFtpgrabber.
 
 %files devel
-%defattr(-,root,root,-)
+%doc AUTHORS ChangeLog COPYING README Roadmap
 %_kde_libdir/libkftpinterfaces.so
 
 #------------------------------------------------
 
 
 %prep
-%setup -q -n %name
+%setup -q -n kftpgrabber-0.8.99.1323046
+%patch0 -p1 -b ssh2-fix
 
 %build
-# otherwise it fails on linking final executable
-#define _disable_ld_as_needed 1
 %cmake_kde4 
 %make
 
 %install
 cd build
-rm -rf %buildroot
 %{makeinstall_std}
+cd .
+chmod 644 %buildroot/%_kde_datadir/applications/kde4/kftpgrabber.desktop
 
 
-%clean
-rm -rf %buildroot
+
