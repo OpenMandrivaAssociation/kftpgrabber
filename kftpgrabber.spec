@@ -9,7 +9,7 @@ Name:		kftpgrabber
 Version:	%{version}
 Release:	%{release}
 License:	GPLv2+
-Url:	        http://www.kftp.org/	
+Url:	        https://www.kftp.org/	
 Group:		Networking/File transfer
 Source0:		%{name}-%version.%revision.tar.bz2
 Patch0:		kftpgrabber-0.8.99.1323046-ssh2.patch
