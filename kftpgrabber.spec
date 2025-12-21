@@ -14,6 +14,7 @@ Group:		Networking/File transfer
 Source0:		%{name}-%version.%revision.tar.bz2
 Patch0:		kftpgrabber-0.8.99.1323046-ssh2.patch
 Summary:        Graphical FTP client for KDE4
+BuildRequires:	make
 BuildRequires:  kdelibs4-devel
 BuildRequires:  openssl-devel
 BuildRequires:	ssh2-devel
