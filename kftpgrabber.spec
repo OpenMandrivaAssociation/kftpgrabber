@@ -1,7 +1,7 @@
 #imported from MRB
 
 %define version 0.8.99
-%define release %mkrel 0.%revision.1
+%define release 1
 #newer svn 
 %define revision 1323046
 
